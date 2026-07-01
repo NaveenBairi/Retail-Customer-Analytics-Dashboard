@@ -25,6 +25,7 @@ rfm=df.groupby('CustomerID').agg({
     "InvoiceNo":"nunique",
     "TotalPrice":"sum"}).reset_index()
 
+
 rfm.columns=['CustomerID','Recency','Frequency',"Monetry"]
 print(rfm.head())
 print(rfm.shape)
