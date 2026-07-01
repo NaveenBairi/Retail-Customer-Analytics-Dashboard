@@ -63,7 +63,7 @@ Python • Streamlit • Machine Learning • Plotly • Scikit-Learn
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Cleaned_Retail_Data")
+    df = pd.read_csv("Cleaned_Retail_Data.csv")
     df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
     df["TotalPrice"] = df["Quantity"] * df["UnitPrice"]
     rfm = pd.read_csv("RFM_Segmented.csv")

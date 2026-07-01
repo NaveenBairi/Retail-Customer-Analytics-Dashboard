@@ -115,7 +115,7 @@ plt.show()
 
 # Save
 joblib.dump(Kmeans, "kmeans_model.pkl")
-joblib.dump(S, "scaler.pkl")
+joblib.dump(S, "scaler.pkl")                 
 rfm.to_csv("RFM_Segmented.csv", index=False)
 
 # Load — exact same names

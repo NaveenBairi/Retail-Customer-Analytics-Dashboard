@@ -86,7 +86,7 @@ print("\nDataTypes od Dataset")
 print(df.dtypes)
 print(df.head())
 
-df.to_csv("Cleaned_Retail_Data",index=False)
+df.to_csv("Cleaned_Retail_Data.csv",index=False)
 
 df.columns
 

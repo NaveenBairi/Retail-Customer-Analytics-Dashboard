@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ## extracting by calculating total price by using quantity and unitprice
-df=pd.read_csv("Cleaned_Retail_data")
+df = pd.read_csv("Cleaned_Retail_Data.csv")
 print(df)  
 df['TotalPrice']=df['Quantity']*df['UnitPrice']
 print(df.head(2))

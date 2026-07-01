@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
-df=pd.read_csv("Cleaned_Retail_data")
+df=pd.read_csv("Cleaned_Retail_data.csv")
 print(df.head())
 print(df.shape)
 print(df.info())
