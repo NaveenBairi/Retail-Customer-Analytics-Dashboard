@@ -1,4 +1,10 @@
 #  Retail Customer Analytics Dashboard
+##  Live Application
+
+**Streamlit Dashboard:** 
+https://retail-customer-analytics-dashboard-gnonad4uuwkhzm6aew4jna.streamlit.app/
+> Click the link above to explore the interactive dashboard without any installation.
+
 An end-to-end Retail Customer Analytics Dashboard built using **Python, Machine Learning, and Streamlit** to analyse customer purchasing behaviour, perform customer segmentation using **RFM Analysis**, recommend similar products, and provide interactive business insights through a modern dashboard.
 
 ##  Project Overview
