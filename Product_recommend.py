@@ -48,12 +48,27 @@ print(recommend_products("WHITE HANGING HEART T-LIGHT HOLDER"))
 result = recommend_products("WHITE HANGING HEART T-LIGHT HOLDER")
 print(result)
 
-# Save Product Similarity Matrix
-# Save Product Similarity Matrix
-joblib.dump(product_df, "product_similarity.pkl")
-print("Product similarity matrix saved successfully!")
+
+# Create Top-30 Recommendation
+
+recommendation_dict = {}
+
+for product in product_df.index:
+    recommendations = (
+        product_df[product]
+        .sort_values(ascending=False)
+        .iloc[1:31]
+        .index
+        .tolist()
+    )
+    recommendation_dict[product] = recommendations
+
+# Save Recommendation Dictionary
+joblib.dump(recommendation_dict, "product_recommendations.pkl")
 
 # Save Product List
-product_list = df["Description"].drop_duplicates().sort_values()
+product_list = sorted(product_df.index.tolist())
 joblib.dump(product_list, "product_list.pkl")
+
+print("Recommendation dictionary saved successfully!")
 print("Product list saved successfully!")
