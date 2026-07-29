@@ -76,17 +76,17 @@ def load_models():
     scaler = joblib.load("scaler.pkl")
 
     try:
-        product_similarity = joblib.load("product_similarity.pkl")
+        recommendation_dict = joblib.load("product_recommendations.pkl")
         product_list = joblib.load("product_list.pkl")
     except FileNotFoundError:
-        product_similarity = None
+        recommendation_dict = None
         product_list = None
 
-    return kmeans, scaler, product_similarity, product_list
+    return kmeans, scaler, recommendation_dict, product_list
 
 
 df, rfm = load_data()
-kmeans, scaler, product_similarity, product_list = load_models()
+kmeans, scaler, recommendation_dict, product_list = load_models()
 
 # HELPER FUNCTIONS
 
@@ -368,7 +368,11 @@ elif selected == "📊 EDA Dashboard":
 # PRODUCT RECOMMENDATION
 
 elif selected == "🛍 Product Recommendation":
-
+    if recommendation_dict is None or product_list is None:
+        st.warning("⚠️ Product Recommendation model is not available.")
+        st.info("This feature is disabled because the similarity model is too large to deploy on GitHub.")
+        st.stop()
+        
     st.title("🛍 Product Recommendation System")
     st.markdown("""
 Find similar products using **Item-Based Collaborative Filtering**.
@@ -381,13 +385,13 @@ Select any product below and the system will recommend the **Top 5 similar produ
     st.write("")
 
     if st.button("🚀 Recommend Products"):
-        if product_name in product_similarity.index:
-            recommendations = product_similarity[product_name].sort_values(ascending=False).iloc[1:6]
+        if product_name in recommendation_dict:
+            recommendations = recommendation_dict[product_name][:5]
             st.success(f"Top recommendations for **{product_name}**")
             st.write("")
 
             cols = st.columns(5)
-            for col, product in zip(cols, recommendations.index):
+            for col, product in zip(cols, recommendations):
                 with col:
                     st.markdown(f"""
                     <div style="background:#E3F2FD;padding:20px;border-radius:15px;
