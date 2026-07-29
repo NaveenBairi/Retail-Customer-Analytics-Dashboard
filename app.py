@@ -74,8 +74,14 @@ def load_data():
 def load_models():
     kmeans = joblib.load("kmeans_model.pkl")
     scaler = joblib.load("scaler.pkl")
-    product_similarity = joblib.load("product_similarity.pkl")
-    product_list = joblib.load("product_list.pkl")
+
+    try:
+        product_similarity = joblib.load("product_similarity.pkl")
+        product_list = joblib.load("product_list.pkl")
+    except FileNotFoundError:
+        product_similarity = None
+        product_list = None
+
     return kmeans, scaler, product_similarity, product_list
 
 

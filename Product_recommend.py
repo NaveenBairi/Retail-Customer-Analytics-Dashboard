@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
-df=pd.read_csv("Cleaned_Retail_data.csv")
+df = pd.read_csv("Cleaned_Retail_Data.csv")
 print(df.head())
 print(df.shape)
 print(df.info())
@@ -23,6 +23,7 @@ customer_product_matrix = df.pivot_table(
 )
 
 print(customer_product_matrix.shape)
+
 print(customer_product_matrix.head())
 
 product_similarity=cosine_similarity(customer_product_matrix.T)
